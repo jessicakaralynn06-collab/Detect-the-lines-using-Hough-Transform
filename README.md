@@ -48,7 +48,7 @@ import matplotlib.pyplot as plt
 # Read the image using OpenCV
 
 ###
-# Your Code Here
+image = cv2.imread("road.jpg")
 ###
 ```
 
@@ -60,7 +60,7 @@ import matplotlib.pyplot as plt
 # Convert to grayscale.
 
 ###
-# Your Code Here
+gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 ###
 ```
 
@@ -72,7 +72,18 @@ import matplotlib.pyplot as plt
 plt.figure(figsize=(10,5))
 
 ###
-# Your Code Here
+plt.subplot(1, 2, 1)
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+plt.title("Original Image")
+plt.axis("off")
+
+plt.subplot(1, 2, 2)
+plt.imshow(gray, cmap="gray")
+plt.title("Grayscale Image")
+plt.axis("off")
+
+plt.show()
+
 ###
 ```
 
@@ -85,7 +96,7 @@ plt.figure(figsize=(10,5))
 
 threshold = 
 ###
-# Your Code Here
+cv2.threshold(gray, 150, 255, cv2.THRESH_BINARY)[1]
 ###
 ```
 
@@ -106,7 +117,7 @@ threshold =
 # Perform Edge Detection
 
 ###
-# Your Code Here
+edges = cv2.Canny(gray, 50, 150)
 ###
 ```
 
@@ -118,7 +129,7 @@ threshold =
 # Apply Gaussian Blur
 
 ###
-# Your Code Here
+blurred = cv2.GaussianBlur(gray, (5, 5), 0)
 ###
 ```
 
@@ -130,7 +141,14 @@ threshold =
 # Detect lines using Hough Transform
 
 ###
-# Your Code Here
+lines = cv2.HoughLinesP(
+    edges,
+    1,
+    np.pi / 180,
+    threshold=50,
+    minLineLength=50,
+    maxLineGap=20
+)
 ###
 ```
 
@@ -148,13 +166,28 @@ threshold =
 ##  Expected Output
 
 * Original image
+* <img width="211" height="135" alt="image" src="https://github.com/user-attachments/assets/95969852-deeb-441a-ae11-3e4d651e2143" />
+
 * Grayscale image
+* <img width="221" height="135" alt="image" src="https://github.com/user-attachments/assets/14ee1dd7-9ee8-4643-be2f-f0348a7d1721" />
+
 * Thresholded image
+* <img width="227" height="138" alt="image" src="https://github.com/user-attachments/assets/45e69413-2d25-46e3-9e49-561ffa5cd11c" />
+
 * ROI masked image
+* <img width="211" height="137" alt="image" src="https://github.com/user-attachments/assets/d60a573a-6c51-4215-81e4-12c007aaf0ea" />
+
 * Edge detected image
+* <img width="218" height="140" alt="image" src="https://github.com/user-attachments/assets/9d9b9bc3-3242-4fde-809a-adcb9733cc12" />
+
 * Smoothed image
+* <img width="223" height="142" alt="image" src="https://github.com/user-attachments/assets/04f91665-a42e-47b7-a380-44bab371df6f" />
+
 * Detected lines
+* <img width="217" height="146" alt="image" src="https://github.com/user-attachments/assets/e6a2b957-e422-4351-9029-c4c87461cfab" />
+
 * Final lane detection output
+* <img width="231" height="150" alt="image" src="https://github.com/user-attachments/assets/948423a6-3cf9-4fda-98d3-879511b407b3" />
 
 ---
 
@@ -175,5 +208,5 @@ Thus, the lane detection pipeline is successfully implemented by completing the 
 
 ##  Developed By
 
-* **Name:** ____________________________
-* **Register No:** ______________________
+* **Name:**Cholimgpuram Sai Likithaa
+* **Register No:** 212224230046
