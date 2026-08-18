@@ -208,5 +208,5 @@ Thus, the lane detection pipeline is successfully implemented by completing the 
 
 ##  Developed By
 
-* **Name:**Cholimgpuram Sai Likithaa
-* **Register No:** 212224230046
+* **Name:**M.JESSICA
+* **Register No:** 212225220044
